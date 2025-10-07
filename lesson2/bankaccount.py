@@ -12,7 +12,27 @@
 
 
 class BankAccount:
-    pass
+    def __init__(self, balance: float):
+        self._balance = balance
+        self._is_active = True
+    
+    @property
+    def balance(self) -> float:
+        return self._balance
+    
+    def deposit(self, amount: float) -> None:
+        self._balance += amount
+    
+    def withdraw(self, amount: float) -> float:
+        self._balance -= amount
+        return amount
+    
+    def close(self):
+        remaining_balance = self._balance
+        self._balance = 0
+        self._is_active = False
+        return remaining_balance
+
 
 
 # код для проверки 
