@@ -14,7 +14,41 @@
 
 
 class User:
-    pass
+    def __init__(self, name: str, password: str):
+        self._name = name
+        self._password = password
+        self._is_admin = False
+        self._is_logged_in = False
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def password(self):
+        return self._password
+
+    @password.setter
+    def password(self, new_password):
+        self._password = new_password
+
+    @property
+    def is_admin(self):
+        return self._is_admin
+
+    def login(self, password: str):
+        if password == self._password:
+            self._is_logged_in = True
+            print(True)
+        else:
+            print(False)
+
+    def logout(self):
+        if self._is_logged_in:
+            self._is_logged_in = False
+            print("Пользователь вышел из системы.")
+        else:
+            print("Пользователь не был залогинен.")
 
 
 # код для проверки 
